@@ -1,5 +1,7 @@
 # Code for creating a two Phase locking scheduler for history of transactions 
 # by Project Group-1 Computer Science 5570 0001 Architecture Of Database Management Systems
+
+# Imported necessary libraries
 import re
 import sys
 import pandas as pd
@@ -48,7 +50,7 @@ class Locking():
         self.exclusive = exclusive
         self.resource = resource
         self.released = released
-        print(resource)
+        print('Data item ' + resource)
         print('Transaction ' + (transaction))
    # Formatting the history of transactions to 
     def formattohistory(self):
@@ -248,15 +250,17 @@ if __name__ == '__main__':
     #print(' A history with conflicts')
     #scheduler.executeHistory('r1[z] r1[x] w3[x] r2[y] w2[x] w4[z] c1 c3 c4 c2')
     
+    #print('A history with an operation which can\'t be executed')
+    #scheduler.executeHistory('r1[x] r2[y] r1[y] c1 r1[x] w2[x] c2')
+    
     #print('History with an operation that needs to be delayed')
     #scheduler.executeHistory('r1[x] w1[x] w2[x] c1 c2')
     
     #print('History with a deadlock')
-   # scheduler.executeHistory('r1[x] w2[y] r1[y] w2[x] c1 c2')
+    #scheduler.executeHistory('r1[x] w2[y] r1[y] w2[x] c1 c2')
    
-    #print('History with more than one operation that has to be delayed')
-    #scheduler.executeHistory('r1[y] w1[x] w2[x] r2[y] w2[y] c1 c2')
+    print('History with more than one operation that has to be delayed')
+    scheduler.executeHistory('r1[y] w1[x] w2[x] r2[y] w2[y] c1 c2')
 
-    print('A history with an operation which can\'t be executed')
-    scheduler.executeHistory('r1[x] r2[y] r1[y] c1 r1[x] w2[x] c2')
+    
     
